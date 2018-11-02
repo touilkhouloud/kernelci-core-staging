@@ -159,6 +159,9 @@ make_threads = int(subprocess.check_output('nproc', shell=True)) + 2
 # ARCH
 if os.environ.has_key('ARCH'):
     arch = os.environ['ARCH']
+    # HACK: kernel arch is 'riscv' for 32/64/128 bit ISAs
+    if (arch == "riscv64"):
+        arch = "riscv"
 else:
     os.environ['ARCH'] = arch
 
