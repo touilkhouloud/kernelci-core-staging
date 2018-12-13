@@ -171,6 +171,8 @@ def get_job_params(config, test_config, defconfig, opts, build, plan):
         'lab_name': config.get('lab'),
         'context': device_type.context,
         'rootfs_prompt': rootfs.prompt,
+        'file_server_resource': file_server_resource,
+        'build_environment': build.get('build_environment')
     }
 
     add_callback_params(job_params, config, plan)
@@ -221,10 +223,7 @@ def get_jobs_from_builds(config, builds, tests):
             continue
 
         defconfig = build['defconfig_full']
-
-        print("Working on build {}".format(' '.join(
-            [config.get('tree'), config.get('branch'), config.get('describe'),
-             arch, defconfig])))
+        print("Working on build: %s" % build.get('file_server_resource'))
 
         for plan in config.get('plans'):
             opts = {

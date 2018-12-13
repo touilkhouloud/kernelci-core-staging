@@ -528,8 +528,12 @@ if install:
             publish = False
 
     if publish:
-        publish_path = os.path.join(
-            job, git_branch, git_describe, arch, defconfig_full, build_environment)
+        if build_environment:
+            publish_path = os.path.join(
+                job, git_branch, git_describe, arch, defconfig_full, build_environment)
+        else:
+            publish_path = os.path.join(
+                job, git_branch, git_describe, arch, defconfig_full)
         bmeta['file_server_resource'] = publish_path
 
     # Create JSON format build metadata
