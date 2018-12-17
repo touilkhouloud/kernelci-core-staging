@@ -37,12 +37,12 @@ def addBoolParams(params, bool_params) {
 def dockerImageName(base, compiler, kernel_arch) {
     def docker_arch
 
-    if (arch == "riscv")
+    if (kernel_arch == "riscv")
         docker_arch = "riscv64"
-    else if ((arch == "i386") || (arch == "x86_64"))
+    else if ((kernel_arch == "i386") || (kernel_arch == "x86_64"))
         docker_arch = "x86"
     else
-        docker_arch = arch
+        docker_arch = kernel_arch
 
     return "${base}${compiler}_${docker_arch}"
 }
