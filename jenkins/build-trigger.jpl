@@ -185,7 +185,7 @@ def addExtraConfigs(configs, kdir, arch) {
         }
     }
 
-    if (params.TREE_NAME == "media")
+    if ((params.TREE_NAME == "media") || (params.TREE_NAME == "gtucker"))
         addExtraIfExists(extra, kdir, "kernel/configs/virtualvideo.config")
 
     if (!configs.contains(base_defconfig))
