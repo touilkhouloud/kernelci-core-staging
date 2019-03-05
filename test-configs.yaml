@@ -461,6 +461,14 @@ device_types:
     filters:
       - blacklist: {defconfig: ['allnoconfig', 'allmodconfig']}
 
+  meson_g12a_sei510:
+    name: 'meson-g12a-sei510'
+    mach: amlogic
+    class: arm64-dtb
+    boot_method: uboot
+    filters:
+      - blacklist: {defconfig: ['allnoconfig', 'allmodconfig']}
+
   meson_gxbb_p200:
     name: 'meson-gxbb-p200'
     mach: amlogic
@@ -940,6 +948,9 @@ test_configs:
 
   - device_type: kirkwood_db_88f6282
     test_plans: [boot_nfs]
+
+  - device_type: meson_g12a_sei510
+    test_plans: [boot, kselftest, simple]
 
   - device_type: meson_gxbb_p200
     test_plans: [boot, kselftest]
